@@ -95,7 +95,7 @@ void loop() {
   Adafruit_MQTT_Subscribe *subscription;
   while ((subscription = mqtt.readSubscription(5000))) {
     // Check which button feed
-    if (subscription == &Olight1button) {
+    if (subscription == &light1button) {
       Serial.print(F("On-Off button: "));
       Serial.println((char *)light1button.lastread);
       
@@ -113,7 +113,7 @@ void loop() {
       if (strcmp((char *)light2button.lastread, "0") == 0) {
         digitalWrite(RELAY2, LOW); 
       }
-      if (strcmp((char *)light1button.lastread, "1") == 0) {
+      if (strcmp((char *)light2button.lastread, "1") == 0) {
         digitalWrite(RELAY2, HIGH); 
       }
     }    
