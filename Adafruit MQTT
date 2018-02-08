@@ -43,6 +43,7 @@ Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO
 /****************************** Feeds ***************************************/
 
 // Notice MQTT paths for AIO follow the form: <username>/feeds/<feedname>
+// you can add more feeds here 
 Adafruit_MQTT_Subscribe light1button = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/light1");
 Adafruit_MQTT_Subscribe light2button = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/light2");
 
@@ -90,7 +91,8 @@ void loop() {
   MQTT_connect();
 
   // this is our 'wait for incoming subscription packets' busy subloop
-  // try to spend your time here
+  
+  // if you added extra feeds you need to one more condition in the loop
 
   Adafruit_MQTT_Subscribe *subscription;
   while ((subscription = mqtt.readSubscription(5000))) {
